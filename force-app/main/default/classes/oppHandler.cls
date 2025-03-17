@@ -1,5 +1,14 @@
 public with sharing class oppHandler {
 
+    public static Map<Id,Id> defaultBillingContacts(Set<Id> accountIds){
+        Map<Id, Id> associatedBillingContact = new Map<Id, Id>();
+        for (Account a : [SELECT Id, Default_Billing_Contact__c FROM Account WHERE ID IN :accountIds]){
+            associatedBillingContact.put(a.Id,a.Default_Billing_Contact__c);
+        }
+        System.Debug('Map for Billing Contact:'+associatedBillingContact);
+        return associatedBillingContact;
+    }
+
     public static void CreateInvoiceFromOpportunity (List<Opportunity> triggernew, Map<Id,Opportunity> triggeroldMap,
                                                 Boolean isInsert){
         //If the opportunity is already set to won then create the invoice record
@@ -14,11 +23,8 @@ public with sharing class oppHandler {
             }
         }
         System.Debug('Associated Accounts:'+associatedAccIds);
-        Map<Id, Id> associatedBillingContact = new Map<Id, Id>();
-        for (Account a : [SELECT Id, Default_Billing_Contact__c FROM Account WHERE ID IN :associatedAccIds]){
-            associatedBillingContact.put(a.Id,a.Default_Billing_Contact__c);
-        }
-        System.Debug('Map for Billing Contact:'+associatedBillingContact);
+        Map<Id,Id> associatedBillingContacts = oppHandler.defaultBillingContacts(associatedAccIds);
+
         //Get Custom MetaData for Net
         List<InvoiceConfig__mdt> invConfig = InvoiceConfig__mdt.getAll().values();
         System.Debug(invConfig);    
@@ -34,7 +40,7 @@ public with sharing class oppHandler {
                     newInv.Opportunity__c = o.Id;
                     newInv.Amount__c = o.Amount;
                     newInv.Due_Date__c = o.CloseDate + Integer.valueof(invConfig[0].DefautNetBilling__c);
-                    newinv.Billing_Contact__c = associatedBillingContact.get(o.AccountId);
+                    newinv.Billing_Contact__c = associatedBillingContacts.get(o.AccountId);
                 newInvoices.add(newInv);
             }
         }

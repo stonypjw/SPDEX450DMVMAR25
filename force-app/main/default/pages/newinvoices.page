@@ -2,6 +2,9 @@
 
 <apex:form >
     <apex:pageBlock >
+        <apex:pageBlockSection>
+            The total vaue of this opportunity is: {!oppvalue}
+        </apex:pageBlockSection>
         <apex:pageBlockButtons location="bottom">
                 <apex:commandButton value="Save" action="{!save}"></apex:commandButton>
                 <apex:commandButton value="Cancel" action="{!cancel}"></apex:commandButton>
