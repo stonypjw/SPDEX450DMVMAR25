@@ -1,14 +1,14 @@
 <apex:page standardController="Account" lightningStylesheets="true">
-    <apex:includeLightning></apex:includeLightning>
+    <apex:includeLightning ></apex:includeLightning>
     <apex:pageBlock title="This is the block title">
         <h1>This is a custom page!</h1>
         <apex:pageBlockSection title="THis is the subtitle" collapsible="true">
             This section is collapsible.
-            <apex:form>
-                <apex:pageBlockSectionItem>
+            <apex:form >
+                <apex:pageBlockSectionItem >
                     <apex:inputField value="{!account.Rating}"></apex:inputField>
                 </apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
                     <apex:inputField value="{!account.AccountNumber}"></apex:inputField>
                     </apex:pageBlockSectionItem>
                 <apex:commandButton action="{!Save}" value="Save"/>
@@ -18,7 +18,7 @@
     <apex:pageBlock title="This is the greeting">
         Hello {!$User.FirstName}
     </apex:pageBlock>
-    <apex:pageblock>
+    <apex:pageblock >
        <!-- <apex:detail/> -->
     </apex:pageblock>
 

@@ -45,5 +45,4 @@ system.debug('Email was sent successfully.');
 system.debug('Email failed: ' + results[0].errors[0].message);
 }
 }
-   }  	
-
+   }

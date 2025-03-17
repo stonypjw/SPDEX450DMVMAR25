@@ -32,7 +32,6 @@ trigger updateOppNameFromAccount on Account (before insert, before update, befor
             if(!changedNameAccIds.isEmpty()){
                 List<Opportunity> oppsToUpdate = [SELECT Id FROM Opportunity WHERE AccountId IN :changedNameAccIds];
                 Database.update(oppsToUpdate,false);
-                
             }
 
         }

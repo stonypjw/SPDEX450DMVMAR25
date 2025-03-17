@@ -5,7 +5,7 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>Invoice__c</members>
+        <members>*</members>
         <name>CustomObject</name>
     </types>
     <types>
