@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Account</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <errorMessage>The referecned account is not the same as the account referenced by the opportunity. Please fix.</errorMessage>
+        <filterItems>
+            <field>Account.Id</field>
+            <operation>notEqual</operation>
+            <valueField>$Source.Opportunity__c</valueField>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Opportunity__c</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Invoices</relationshipLabel>
+    <relationshipName>Invoices</relationshipName>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
