@@ -1,7 +1,7 @@
 public with sharing class invoicecontroller {
 
     private Id oId;
-    private Opportunity opp;
+    public Opportunity opp {get;set;}
     public Decimal oppValue {get;set;}
     private Map<Id,Id> associatedBillingContacts;
 
@@ -11,7 +11,7 @@ public with sharing class invoicecontroller {
     }
 
     private void loadOpportunity(){
-        opp = [SELECT Amount,AccountId FROM Opportunity WHERE ID = :oId];
+        opp = [SELECT Name,Amount,AccountId FROM Opportunity WHERE ID = :oId];
         oppValue = opp.Amount;
         Set<Id> accountIds = new Set<Id>();
             accountIds.add(opp.AccountId);

@@ -1,5 +1,6 @@
 <apex:page lightningStylesheets="true" recordSetVar="Invoices" standardController="Invoice__c" extensions="invoicecontroller">
 
+<c:disclaimer level="2" recordName="{!opp.name}"/>
 <apex:form >
     <apex:pageBlock >
         <apex:pageBlockSection >
