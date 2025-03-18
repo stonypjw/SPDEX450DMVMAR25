@@ -1,3 +1,21 @@
 <template>
-    <c-hello-world greeting={appBuilderGreeting}></c-hello-world>
+    <lightning-card>
+        <lightning-accordion>
+            <lightning-accordion-section>
+                <lightning-button label="Change" onclick={changeText}></lightning-button>
+                <c-hello-world greeting={appBuilderGreeting}></c-hello-world>
+            </lightning-accordion-section>
+            <lightning-accordion-section>
+                <lightning-record-form
+                object-api-name={objectApiName}
+                record-id={recordId}
+                layout-type="Compact"
+                mode="view">
+            </lightning-record-form>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+
+   
+
 </template>
