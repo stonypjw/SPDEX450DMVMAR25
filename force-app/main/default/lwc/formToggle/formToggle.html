@@ -1,0 +1,11 @@
+    <template>
+        <template if:true={editMode}>
+            <!-- Show if in edit mode-->
+            <lightning-button label="View" title="View" onclick={handleChange} class="slds-m-left_x-small"></lightning-button>
+            <c-opp-record-form oncancel={handleButtonClick} onsuccess={handleButtonClick} record-id={recordId} mode="edit"></c-opp-record-form>
+        </template>
+        <template if:false={editMode}>
+            <lightning-button label="Edit" title="Edit" onclick={handleChange} class="slds-m-left_x-small"></lightning-button>
+            <c-opp-record-form record-id={recordId} mode="view"></c-opp-record-form>
+        </template>
+    </template>
