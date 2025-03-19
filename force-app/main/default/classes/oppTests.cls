@@ -111,4 +111,33 @@ private class oppTests {
 
     }
 
+    @isTest
+    static void testOppNamingConventionOnUpdate_Bulk() {
+
+    Account a = new Account();
+        a.Name = 'Test';
+    
+    insert a;
+
+    List<Opportunity> newOpps = new List<Opportunity>();
+    for(Integer i=0; i<201; i++){
+        Opportunity o = new Opportunity();
+        o.Name='fuhefu';
+        o.Type='New Customer';
+        o.CloseDate = Date.newInstance(2025, 10, 5);
+        o.StageName = 'Prospecting';
+        o.AccountId = a.Id;
+        newOpps.add(o);
+    }   
+    insert newOpps;
+
+
+
+      Test.startTest();
+      a.Name = 'Changed';
+      update a;
+
+ 
+
+    }
 }

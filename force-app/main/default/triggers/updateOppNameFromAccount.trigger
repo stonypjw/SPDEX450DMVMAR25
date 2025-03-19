@@ -22,7 +22,14 @@ trigger updateOppNameFromAccount on Account (before insert, before update, befor
         }
         if(trigger.isUpdate){
 
+            for(Account a : trigger.new){
+                if(a.Name != trigger.oldMap.get(a.Id).Name){
+                    List<Opportunity> oppToUpdate = [SELECT Id FROM Opportunity WHERE AccountId = :a.Id];
+                    update oppToUpdate;
+                }
+            }
             //Automate the update of opportunities to reflect an Account Name change
+            /*
             Set<Id> changedNameAccIds = new Set<Id>();
             for(Account a : trigger.new){
                 if(a.Name != trigger.oldMap.get(a.Id).Name){
@@ -33,6 +40,7 @@ trigger updateOppNameFromAccount on Account (before insert, before update, befor
                 List<Opportunity> oppsToUpdate = [SELECT Id FROM Opportunity WHERE AccountId IN :changedNameAccIds];
                 Database.update(oppsToUpdate,false);
             }
+                */
 
         }
         if(trigger.isDelete){
