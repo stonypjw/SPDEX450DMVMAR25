@@ -6,6 +6,6 @@
         </template>
         <template if:false={editMode}>
             <lightning-button label="Edit" title="Edit" onclick={handleChange} class="slds-m-left_x-small"></lightning-button>
-            <c-opp-record-form record-id={recordId} mode="view"></c-opp-record-form>
+           <c-opp-record-form object-api-name={objectApiName} record-id={recordId} mode="view"></c-opp-record-form>
         </template>
     </template>
