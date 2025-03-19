@@ -3,7 +3,7 @@
         <template if:true={editMode}>
             <!-- Show if in edit mode-->
             <lightning-button label="View" title="View" onclick={handleChange} class="slds-m-left_x-small"></lightning-button>
-            <c-opp-record-form  object-api-name={objectApiName} oncancel={handleButtonClick} onsuccess={handleButtonClick} record-id={recordId} form-mode="edit"></c-opp-record-form>
+            <c-opp-record-form  object-api-name={objectApiName} onmodalcancel={handleButtonClick} onmodalsuccess={handleButtonClick} record-id={recordId} form-mode="edit"></c-opp-record-form>
         </template>
         <template if:false={editMode}>
             <lightning-button label="Edit" title="Edit" onclick={handleChange} class="slds-m-left_x-small"></lightning-button>
